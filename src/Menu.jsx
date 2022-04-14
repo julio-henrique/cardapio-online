@@ -14,6 +14,7 @@ export const Menu = ({ menuItems }) => {
         )
     })
 
+
     return (
         <div className="section-center">
             {showMenuItems}
