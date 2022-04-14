@@ -1,19 +1,20 @@
+
 export const Menu = ({ menuItems }) => {
     const showMenuItems = menuItems.map(item => {
+        const { id, img, title, price, desc } = item
         return (
-            <article className='menu-item' key={item.id}>
-                <img src={item.img} alt={item.title} className='photo' />
+            <article className='menu-item' key={id}>
+                <img src={img} alt={title} className='photo' />
                 <div className='item-info'>
                 <header>
-                    <h4>{item.title}</h4>
-                    <h4 className='price'>${item.price}</h4>
+                    <h4>{title}</h4>
+                    <h4 className='price'>${price}</h4>
                 </header>
-                <p className='item-text'>{item.desc}</p>
+                <p className='item-text'>{desc}</p>
                 </div>
             </article>
         )
     })
-
 
     return (
         <div className="section-center">

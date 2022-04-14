@@ -12,7 +12,9 @@ function App() {
 
   function filterItems(categoriesParam) {
     if (categoriesParam === 'all') return setMenuItems(data)
+
     const filteredCategory = data.filter(item => item.category === categoriesParam)
+    
     setMenuItems(filteredCategory)
     return categoriesParam
   }
