@@ -44,7 +44,6 @@ O usuário que acessa o cardápio deve ser capaz de:
 
 - [React](https://reactjs.org/) - JS lib
 
-Não vou negar que esse processo parecia MUITO MAIS DIFICIL quando eu peguei para fazer ele, realmente pensava que seria um grande desafio.
 ### Oque eu aprendi
 
 Esse projeto foi muito bom para solidificar os meus conhecimentos e para trazer à luz algumas dificuldades que eu tinha.
@@ -83,71 +82,30 @@ export const Categories = ({ categories, filterItems }) => {
 
 Eu gostei muito de como eu 'componentizei' a aplicação dividindo em partes e ficando bem mais profissional. Assim cada um cuida do que é seu dever e não fica só 1 App.jsx gigante. 
 
-E percebi que o 
+E percebi que o meu código tem ficado melhor com pequenas mudanças como, colocar o `return` na mesma linha do `if` se o `return` for pequeno
+Ex: 
+```jsx
+function filterItems(categoriesParam) {
+    if (categoriesParam === 'all') return setMenuItems(data)
 
-
-```tsx
-import { auth, firebase } from "../services/firebase"
-
-async function signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider() 
-    // Criando o login
-
-    const result = await auth.signInWithPopup(provider) 
-    // Escolhendo como fazer o login, neste caso com um popup
-    if (result.user) {
-        const { displayName, photoURL, uid } = result.user
-
-        if (!displayName || !photoURL) { 
-            // Condicional para negar o login a usuários que não tenham foto ou nome
-            throw new Error('Missing either Name or photo from Google Account')
-        }
-
-        setUser({ 
-            // Definindo quais são as info do usuário
-            id: uid,
-            name: displayName,
-            avatar: photoURL
-        })
-    }
-}
+    const filteredCategory = data.filter(item => item.category === categoriesParam)
+    
+    setMenuItems(filteredCategory)
+    return categoriesParam
+  }
 ```
-E simpes assim temos um login com o Google :D
+Olha como ficou bem melhor :D
 
-
-Agora esse é o código que eu usei para criar uma nova sala, usando o `FormEvent` para definir a 'tipagem' do typescript.
-Depois dou um retorno se o nome da sala for vazio.
-Seguindo o código, acesso o banco de dados e vou criar a sala, com o titulo e o id do usuário que criou a sala.
-Feito isso só dou um `history.push()` e coloco a chave da sala.
-Segue o código:
-```tsx
-import { useHistory } from 'react-router-dom'
-const history = useHistory()
-const [ newRoom, setNewRoom ] = useState('')
-
-async function handleCreateRoom(event: FormEvent) {
-    event.preventDefault()
-
-    if (newRoom.trim() === '') {
-        return
-    }
-
-    const roomRef = database.ref('rooms')
-    const firebaseRoom = await roomRef.push({
-        title: newRoom,
-        authorId: user?.id
-    })
-
-    history.push(`/rooms/${firebaseRoom.key}`)
-}
-```
 
 ### Desenvolvimento Continuo
 
-Nossa esse projeto me cansou, realmente foi bem grande. **Daqui em diante vou continuar seguindo e aprendendo sobre o react**, foi bem interessante criar o hook `useRoom` porque ele ajudou muito na parte de não repetir código e ficar mais organizado.
-Então vou focar em React.js :D
+Não vou negar que esse processo parecia MUITO MAIS DIFICIL quando eu peguei para fazer ele, realmente pensava que seria um grande desafio.
+Mas as minhas habilidades estavam á altura 😁.
 
-## Author
+**Com isso concluo que os meus fundamentos de ReactSJ estão bem sólidos** e já posso partir para novos mares. 
+Typescript ou NextJS? Ainda estou decidindo, provavelmente eu vou primeiro com typescript
+
+## Autor
 
 - Linkedin - [Julio Henrique](https://www.linkedin.com/in/julio-h/)
 - Email - juliohjesus@gmail.com
