@@ -107,5 +107,5 @@ Typescript ou NextJS? Ainda estou decidindo, provavelmente eu vou primeiro com t
 
 ## Autor
 
-- Linkedin - [Julio Henrique](https://www.linkedin.com/in/julio-h/)
+- Linkedin - [Julio Henrique](https://www.linkedin.com/in/julio-henriqueCS/)
 - Email - juliohjesus@gmail.com
